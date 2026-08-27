@@ -1210,41 +1210,169 @@ display: none;
 }
 }
 
+/* =========================================
+   RESPONSIVE - TABLET & MOBILE
+========================================= */
+
 @media (max-width: 800px) {
 
-.sidebar {
-display: none;
+    /* Keep the sidebar visible */
+    .sidebar {
+        display: flex;
+        position: fixed;
+
+        left: 0;
+        top: 0;
+        bottom: 0;
+
+        width: 265px;
+        min-height: 100vh;
+
+        padding: 30px 14px 20px;
+
+        z-index: 20;
+    }
+
+    /* Keep the main content beside the sidebar */
+    .main {
+        margin-left: 265px;
+        width: calc(100% - 265px);
+
+        min-width: 735px;
+
+        padding: 20px 25px 50px;
+    }
+
+    /* HERO */
+    .hero {
+        margin-top: 30px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    /* Hide decorative waves */
+    .wave {
+        display: none;
+    }
+
+    /* CONTENT */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Hide the globe/info card on smaller screens */
+    .info-card {
+        display: none;
+    }
+
+    /* TRANSLATOR */
+    .translator-card {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1.5fr 0.8fr;
+        gap: 20px;
+    }
+
+    /* BUTTONS */
+    .button-row {
+        grid-template-columns: 1fr 0.4fr;
+    }
+
+    /* RESULT */
+    .result-card {
+        width: 100%;
+        padding: 16px;
+    }
+
+    /* Hide large audio animation */
+    .audio-visual {
+        display: none;
+    }
+
+    /* HISTORY */
+    .history-card {
+        width: 100%;
+    }
+
+    /* FAVORITES */
+    .favorites-card {
+        width: 100%;
+    }
+
+    /* SAVED PHRASES */
+    .saved-phrases-card {
+        width: 100%;
+    }
+
+    /* LANGUAGES */
+    .languages-card {
+        width: 100%;
+    }
+
+    /* SETTINGS */
+    .settings-card {
+        width: 100%;
+    }
+
+    /* QUOTE */
+    .quote {
+        width: 100%;
+    }
 }
 
-.main {
-margin-left: 0;
-width: 100%;
-padding: 20px;
-}
 
-.hero h1 {
-font-size:12px;
-}
+/* =========================================
+   VERY SMALL SCREENS
+========================================= */
 
-.hero p {
-font-size: 16px;
-}
+@media (max-width: 500px) {
 
-.form-grid {
-grid-template-columns: 1fr;
-}
+    .sidebar {
+        width: 265px;
+    }
 
-.button-row {
-grid-template-columns: 1fr;
-}
+    .main {
+        margin-left: 265px;
+        width: calc(100% - 265px);
+        min-width: 735px;
 
-.result-card {
-padding: 16px;
-}
+        padding: 20px;
+    }
 
-.audio-visual {
-display: none;
-}
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .translator-card {
+        padding: 16px;
+    }
+
+    .result-card {
+        padding: 16px;
+    }
+
+    .history-card,
+    .favorites-card,
+    .saved-phrases-card,
+    .languages-card,
+    .settings-card {
+        padding: 18px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1889,9 +2017,322 @@ align-items: center;
 justify-content: space-between;
 margin-bottom: 20px;
 }
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobile-menu-btn {
+    display: none;
+
+    position: fixed;
+
+    top: 18px;
+    left: 18px;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(76, 112, 174, 0.3);
+    border-radius: 12px;
+
+    background: rgba(7, 18, 43, 0.9);
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    z-index: 1001;
+}
+
+
+/* MOBILE OVERLAY */
+
+.mobile-menu-overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 999;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    /* Show menu button */
+    .mobile-menu-btn {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* Sidebar becomes slide-out menu */
+    .sidebar {
+
+        display: flex;
+
+        position: fixed;
+
+        left: -280px;
+
+        top: 0;
+        bottom: 0;
+
+        width: 265px;
+
+        min-height: 100vh;
+
+        transition: left 0.3s ease;
+
+        z-index: 1000;
+    }
+
+
+    /* Sidebar opened */
+    .sidebar.mobile-open {
+        left: 0;
+    }
+
+
+    /* Overlay when menu is open */
+    .mobile-menu-overlay.mobile-visible {
+        display: block;
+    }
+
+
+    /* Main content */
+    .main {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding: 80px 20px 40px;
+    }
+
+
+    /* Hero */
+    .hero {
+
+        margin-top: 20px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 34px;
+
+        line-height: 1.1;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .hero p {
+
+        font-size: 16px;
+
+        padding: 0 10px;
+    }
+
+
+    /* Hide decorative waves */
+    .wave {
+        display: none;
+    }
+
+
+    /* Translator and info */
+    .content-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .info-card {
+        display: none;
+    }
+
+
+    /* Form */
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    /* Buttons */
+    .button-row {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Result */
+    .result-card {
+
+        width: 100%;
+
+        padding: 16px;
+    }
+
+
+    /* Hide decorative audio */
+    .audio-visual {
+        display: none;
+    }
+
+
+    /* History */
+    .history-card {
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+
+    /* Favorites */
+    .favorites-card {
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+
+    /* Saved phrases */
+    .saved-phrases-card {
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+
+    /* Languages */
+    .languages-card {
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+
+    /* Settings */
+    .settings-card {
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+
+    /* Quote */
+    .quote {
+
+        width: 100%;
+
+        padding: 15px 20px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 500px) {
+
+    .mobile-menu-btn {
+
+        top: 15px;
+
+        left: 15px;
+
+        width: 44px;
+
+        height: 44px;
+    }
+
+
+    .main {
+
+        padding: 75px 14px 35px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 30px;
+    }
+
+
+    .hero p {
+
+        font-size: 15px;
+    }
+
+
+    .translator-card {
+
+        padding: 14px;
+    }
+
+
+    .message-box {
+
+        height: 240px;
+    }
+
+
+    .result-card {
+
+        padding: 14px;
+    }
+}
+
+
+/* =========================================
+   LIGHT MODE MOBILE MENU
+========================================= */
+
+body.light-mode .mobile-menu-btn {
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #111;
+
+    border-color: #d8e0ed;
+}
 </style>
 </head>
 <body>
+    <!-- MOBILE MENU BUTTON -->
+<button class="mobile-menu-btn" id="mobileMenuBtn" type="button">
+    ☰
+</button>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 <div class="app">
 <!-- =========================================
 SIDEBAR
@@ -2095,7 +2536,7 @@ placeholder="Type your message here..."
 4. How should you sound?
 </div>
 <select class="select-box" id="tone">
-<option>☺ Friendly</option>
+<option>Friendly</option>
 <option>Casual</option>
 <option>Respectful</option>
 <option>Professional</option>
@@ -3267,6 +3708,99 @@ alert('All saved phrases have been cleared.');
 });
 
 }
+// ========================================
+// MOBILE MENU
+// ========================================
+
+const mobileMenuBtn =
+    document.getElementById('mobileMenuBtn');
+
+const mobileMenuOverlay =
+    document.getElementById('mobileMenuOverlay');
+
+const sidebar =
+    document.querySelector('.sidebar');
+
+
+// ========================================
+// TOGGLE MOBILE MENU
+// ========================================
+
+mobileMenuBtn.addEventListener('click', function () {
+
+    const menuIsOpen =
+        sidebar.classList.contains('mobile-open');
+
+    if (menuIsOpen) {
+
+        closeMobileMenu();
+
+    } else {
+
+        openMobileMenu();
+
+    }
+
+});
+
+
+// ========================================
+// OPEN MOBILE MENU
+// ========================================
+
+function openMobileMenu() {
+
+    sidebar.classList.add('mobile-open');
+
+    mobileMenuOverlay.classList.add('mobile-visible');
+
+    mobileMenuBtn.innerHTML = '✕';
+
+}
+
+
+// ========================================
+// CLOSE MOBILE MENU
+// ========================================
+
+function closeMobileMenu() {
+
+    sidebar.classList.remove('mobile-open');
+
+    mobileMenuOverlay.classList.remove('mobile-visible');
+
+    mobileMenuBtn.innerHTML = '☰';
+
+}
+
+
+// ========================================
+// CLOSE WHEN OVERLAY IS CLICKED
+// ========================================
+
+mobileMenuOverlay.addEventListener(
+    'click',
+    closeMobileMenu
+);
+
+
+// ========================================
+// CLOSE AFTER SELECTING NAVIGATION
+// ========================================
+
+document.querySelectorAll('.nav-item').forEach(function (item) {
+
+    item.addEventListener('click', function () {
+
+        if (window.innerWidth <= 800) {
+
+            closeMobileMenu();
+
+        }
+
+    });
+
+});
 </script>
 </html>
 
